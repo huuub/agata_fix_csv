@@ -10,7 +10,7 @@ for excelfile in os.listdir(exceldir):
         csvfile=excelfile + '.csv'
         df = pd.read_excel(exceldir+'/'+excelfile,index_col=None)
         dfr=df[1:]
-        
+       
         dfr.iloc[:,0]=dfr.iloc[:,0].astype(str).str.ljust(15,' ')
         dfr.iloc[:,1]=dfr.iloc[:,1].astype(str).str.ljust(40,' ')
         dfr.iloc[:,2]=dfr.iloc[:,2].astype(str).str.ljust(3,' ')
@@ -41,13 +41,16 @@ for excelfile in os.listdir(exceldir):
         data = fi.read()
         fi.close()          
         data=data.replace('|', ' ')
+        data=data.replace('\n', ' \n')
+        # for line in data.splitlines():
 
         #add header
         fh = open(headerfile, 'r')
         header= fh.read()
         data= header + data
         fh.close()
-
+	
         fo = open(exceldir+'/'+csvfile, 'w')
         fo.write(data)
         fo.close()
+

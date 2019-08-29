@@ -28,7 +28,8 @@ columns=[(0,15),
 (230,236),
 (237,243),
 (244,250),
-(251,252)]
+(251,252)
+]
 
 if not os.path.exists(exceldir):
     os.mkdir(exceldir)
